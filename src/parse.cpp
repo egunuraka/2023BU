@@ -15,11 +15,13 @@ std::vector <std::vector <long double>> parse_file(std::string file_name) {
     std::vector <std::vector <long double>> coords;
 
     std::ifstream input(file_name);
-
+    std::string line2;
     std::string line;
     while (!input.eof()) {
         std::getline(input, line);
         std::getline(input, line);
+        std::getline(input, line2);
+        line+= " " + line2;
         for(size_t i = 0; i < line.length(); i++) {
             if(line[i] == '=')line[i] = ' ';
             if(line[i] != '-' && !isdigit(line[i]) && line[i] != '.' && line[i] != 'E' && line[i] != '+') line[i] = ' ';
